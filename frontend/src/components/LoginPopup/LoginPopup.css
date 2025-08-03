@@ -1,0 +1,138 @@
+.login-popup {
+    position: fixed; /* Changed from absolute to fixed for better overlay behavior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly darker, more prominent overlay */
+    display: grid;
+    place-items: center; /* More standard than place-self: center on container */
+    z-index: 1000; /* Ensure it's on top of everything */
+    backdrop-filter: blur(5px); /* Add a subtle blur to the background */
+}
+
+.login-popup-container {
+    /* place-self: center; // This is now handled by place-items on the parent */
+    width: min(90vw, 400px); /* Using min() for better responsiveness on small screens, max-width of 400px */
+    color: #555; /* Slightly softer text color */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px 40px; /* Increased padding for more breathing room */
+    border-radius: 12px; /* More pronounced rounded corners */
+    font-size: 15px; /* Slightly larger base font size */
+    animation: fadeIn 0.5s ease-out; /* Added ease-out for smoother animation */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    position: relative; /* Needed for potential future absolute positioning of elements inside */
+}
+
+.login-popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333; /* Darker title for better contrast */
+    font-size: 1.8em; /* Larger title */
+    font-weight: 600; /* Bolder title */
+    margin-bottom: 10px; /* Space below title */
+}
+
+.login-popup-title img {
+    width: 20px; /* Slightly larger icon */
+    cursor: pointer;
+    opacity: 0.6; /* Slightly faded icon */
+    transition: transform 0.2s ease, opacity 0.2s ease; /* Smooth transition for hover */
+}
+
+.login-popup-title img:hover {
+    opacity: 1; /* Full opacity on hover */
+    transform: scale(1.1); /* Slight grow effect */
+}
+
+.login-popup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* Slightly adjusted gap */
+}
+
+/* Corrected selector: inputs vs input */
+.login-popup-inputs input { /* Changed 'inputs' to 'input' */
+    width: 100%; /* Ensure inputs take full width */
+    outline: none;
+    border: 1px solid #ddd; /* Lighter border color */
+    padding: 12px 15px; /* Increased padding */
+    border-radius: 6px; /* Slightly more rounded input fields */
+    font-size: 16px; /* Larger font inside inputs */
+    color: #333; /* Text color inside inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.login-popup-inputs input:focus {
+    border-color: tomato; /* Highlight border on focus */
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.2); /* Subtle glow on focus */
+}
+
+.login-popup-container button {
+    border: none;
+    padding: 12px 20px; /* More padding for a meatier button */
+    border-radius: 6px; /* Consistent border-radius with inputs */
+    color: white;
+    background-color: tomato;
+    font-size: 17px; /* Larger font size for button text */
+    font-weight: 600; /* Bolder button text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    letter-spacing: 0.5px; /* Slightly spaced out letters */
+}
+
+.login-popup-container button:hover {
+    background-color: #ff6347; /* Slightly darker tomato on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 5px 10px rgba(255, 99, 71, 0.3); /* Soft shadow on hover */
+}
+
+.login-popup-condition {
+    display: flex;
+    align-items: center; /* Vertically align checkbox and text */
+    gap: 10px; /* Slightly increased gap */
+    margin-top: -5px; /* Adjusted margin to bring it closer to inputs */
+    font-size: 13px; /* Slightly smaller text for condition */
+    color: #666; /* Softer color for condition text */
+}
+
+.login-popup-condition input[type="checkbox"] { /* Target checkbox specifically */
+    min-width: 16px; /* Ensure checkbox is visible and clickable */
+    min-height: 16px;
+    accent-color: tomato; /* Changes checkbox color to tomato (modern browsers) */
+    cursor: pointer;
+}
+
+.login-popup p {
+    font-size: 14px; /* Consistent font size for helper text */
+    color: #666; /* Softer color for helper text */
+}
+
+.login-popup p span {
+    color: tomato;
+    font-weight: 500; /* Slightly bolder for emphasis */
+    cursor: pointer;
+    transition: color 0.2s ease; /* Smooth transition for hover */
+}
+
+.login-popup p span:hover {
+    color: #ff6347; /* Slightly darker tomato on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

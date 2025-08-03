@@ -1,0 +1,214 @@
+/* Add this to your general CSS reset or at the very top of your stylesheet */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.header{
+    height: 70vh;
+    margin: 0;
+    background: url('/header_img.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+
+    /* --- NEW ADDITIONS FOR DARKER IMAGE --- */
+    &::before { /* Create a pseudo-element overlay */
+        content: ''; /* Required for pseudo-elements */
+        position: absolute; /* Position it absolutely within the header */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Dark semi-transparent background. Adjust the last value (0.3)
+           to control the darkness: 0.1 (very light) to 0.7 (quite dark). */
+        background: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
+        z-index: 1; /* Ensure it's above the background image but below the text */
+    }
+    /* --- END NEW ADDITIONS --- */
+}
+
+.header-contents{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 45%;
+    bottom: 5%;
+    left: 6vw;
+    animation: fadeIn 3s;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    z-index: 2; /* Ensure header-contents are above the overlay */
+}
+
+.header-contents h2{
+    font-weight: 600;
+    color: white;
+    font-size: max(4.5vw,28px);
+    line-height: 1.2;
+}
+
+.header-contents p{
+    color:white;
+    font-size: max(1.2vw, 16px);
+    line-height: 1.5;
+    margin-bottom: 1vw;
+}
+
+.header-contents button {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: max(1.1vw, 18px);
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    background-size: 200% 100%;
+    transition: background-position 0.4s ease;
+    white-space: nowrap;
+}
+
+.header-contents button:hover {
+    background-position: -100% 0;
+}
+
+.header-contents button:active {
+    background-position: 0% 0;
+    background: linear-gradient(to right, #0056b3, #0099cc);
+}
+
+.header-contents button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Explore Menu CSS (unchanged from previous interaction for context) */
+.explore-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 6vw;
+    margin-top: 80px;
+}
+
+.explore-menu h1{
+    color: #262626;
+    font-weight: 500;
+    font-size: max(2.5vw, 24px);
+    text-align: center;
+}
+
+.explore-menu-text{
+    max-width: 60%;
+    color: #808080;
+    font-size: 1.1vw;
+    line-height: 1.5;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.explore-menu-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin: 20px 0px;
+    padding: 10px 0;
+}
+
+.explore-menu-list-item{
+    margin-bottom: 20px;
+}
+
+.explore-menu-list-item img{
+    width: 7.5vw;
+    min-width: 80px;
+    cursor:pointer;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.explore-menu-list-item img:hover {
+    transform: scale(1.05);
+}
+
+.explore-menu-list-item p{
+    margin-top: 10px;
+    color: #747474;
+    font-size: max(1.4vw,16px);
+    cursor: pointer;
+}
+
+.explore-menu hr{
+    margin: 10px 0px;
+    height: 2px;
+    background-color:#e2e2e2 ;
+    border: none;
+}
+
+.explore-menu-list-item .active{
+    border: 4px solid tomato;
+    padding: 2px;
+}
+
+/* Media Queries (unchanged for brevity, but they should include the z-index fix if needed for any content) */
+@media (max-width:1050px){
+    .explore-menu {
+        gap: 15px;
+    }
+    .explore-menu h1 {
+        font-size: max(3.5vw, 22px);
+    }
+    .explore-menu-text{
+        max-width: 90%;
+        font-size: 14px;
+    }
+    .explore-menu-list{
+        gap: 20px;
+    }
+    .explore-menu-list-item img{
+        width: 10vw;
+    }
+    .explore-menu-list-item p{
+        font-size: max(1.6vw,14px);
+    }
+}
+
+@media (max-width:750px){
+    .explore-menu {
+        padding: 0 4vw;
+        gap: 10px;
+        margin-top: 40px;
+    }
+    .explore-menu h1 {
+        font-size: max(6vw, 20px);
+    }
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 12px;
+    }
+    .explore-menu-list{
+        gap: 15px;
+    }
+    .explore-menu-list-item img{
+        width: 20vw;
+        min-width: 70px;
+    }
+    .explore-menu-list-item p{
+        font-size: max(3vw,13px);
+    }
+    .explore-menu hr{
+        margin: 5px 0px;
+    }
+}

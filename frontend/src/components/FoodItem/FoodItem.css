@@ -1,0 +1,162 @@
+.food-item {
+    width: 100%;
+    max-width: 320px; /* Constrain width for better proportions */
+    margin: 0 auto 1.5rem; /* Improved vertical spacing */
+    border-radius: 16px; /* Smoother corners */
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.08), 
+        0 2px 6px rgba(0, 0, 0, 0.04); /* Layered subtle shadow */
+    transition: 
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), 
+        box-shadow 0.4s ease; /* Enhanced transition */
+    animation: fadeIn 0.6s ease-out;
+    overflow: hidden; /* Contain child elements */
+    background: white;
+    position: relative;
+}
+
+.food-item:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 
+        0 12px 28px rgba(0, 0, 0, 0.12),
+        0 8px 16px rgba(0, 0, 0, 0.06); /* Enhanced depth on hover */
+}
+
+.food-item-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Better image cropping */
+    border-radius: 16px 16px 0 0;
+    transition: transform 0.5s ease; /* Image zoom effect */
+    display: block;
+}
+
+.food-item:hover .food-item-image {
+    transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+.food-item-info {
+    padding: 1.25rem 1.5rem 1.5rem; /* Improved spacing (20px/24px) */
+}
+
+.food-item-name-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem; /* 12px */
+    gap: 12px; /* Prevent squeezing */
+}
+
+.food-item-name-rating p {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600; /* Semi-bold */
+    color: #2d2d2d; /* Darker text for better contrast */
+    margin: 0;
+    font-family: 'Segoe UI', 'Poppins', sans-serif; /* Modern font stack */
+    letter-spacing: -0.25px;
+    line-height: 1.3;
+}
+
+.food-item-name-rating img {
+    width: 80px; /* Slightly larger rating graphic */
+    height: auto;
+    flex-shrink: 0;
+}
+
+.food-item-desc {
+    color: #6b7280; /* Modern gray */
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5;
+    margin-bottom: 1rem; /* 16px */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.food-item-price {
+    color: #ef4444; /* Vibrant tomato red */
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    margin: 0.75rem 0 1rem; /* Improved spacing */
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+.food-item-img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.food-item-img-container .add {
+    width: 44px; /* Slightly larger */
+    height: 44px;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: 
+        transform 0.3s ease, 
+        background 0.3s ease;
+}
+
+.food-item-img-container .add:hover {
+    transform: scale(1.1) rotate(90deg); /* Interactive rotation */
+    background: #f8fafc; /* Light hover background */
+}
+
+.food-item-counter {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Increased spacing */
+    padding: 8px 12px; /* Better padding */
+    border-radius: 50px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.food-item-counter img {
+    width: 28px; /* Slightly smaller */
+    height: 28px;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.food-item-counter img:hover {
+    background: #f5f5f5;
+    transform: scale(1.15);
+}
+
+/* Animation for counter changes */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.food-item-counter img:active {
+    animation: pulse 0.4s ease;
+}
+
+/* FadeIn Animation */
+@keyframes fadeIn {
+    0% { 
+        opacity: 0; 
+        transform: translateY(10px);
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}

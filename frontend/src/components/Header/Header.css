@@ -1,0 +1,194 @@
+/* Add this to your general CSS reset or at the very top of your stylesheet */
+/* This helps remove default browser margins/padding that can affect layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* A more common and readable default font */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.header{
+    /* Adjusted height: 
+       - 70vh makes it take up 70% of the viewport height, creating a larger hero section.
+       - The image strongly suggests a tall hero section.
+       - If you want it full screen, change to 100vh.
+    */
+    height: 70vh; 
+    
+    /* Removed margin: 30px auto; 
+       This would create unwanted space around the header.
+    */
+    margin: 0; 
+    
+    background: url('/header_img.png') no-repeat center center; /* Center the image */
+    
+    /* Changed to 'cover':
+       'contain' ensures the whole image is visible but can leave empty space.
+       'cover' ensures the background area is fully covered by the image, cropping if necessary, 
+       which matches the hero section look in your screenshot.
+    */
+    background-size: cover; 
+    
+    position: relative;
+    overflow: hidden; /* Ensures nothing spills out */
+    
+    /* Optional: Add an overlay for better text contrast if the image is too bright */
+    /* You might need a pseudo-element for this, or an actual div inside the header. */
+    /* Example: Using a pseudo-element for a subtle dark overlay */
+    /*
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2); // Subtle dark overlay
+        z-index: 1; // Make sure it's behind the content
+    }
+    */
+}
+
+.header-contents{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start; /* Align text to the left */
+    gap: 1.5vw; /* Maintain spacing between elements */
+    
+    /* Adjusted max-width for content to match the screenshot more closely.
+       The text wraps more naturally with a slightly larger max-width.
+    */
+    max-width: 45%; 
+    
+    /* Adjusted bottom position based on the new screenshot.
+       It looks like the content is very close to the bottom.
+       You might need to fine-tune this with pixels or a smaller percentage.
+    */
+    bottom: 5%; 
+    
+    /* Kept left position as it matches the screenshot */
+    left: 6vw; 
+    
+    animation: fadeIn 3s; /* Keep your animation */
+    
+    /* Added text shadow for much better readability over the bright image */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
+    z-index: 2; /* Ensure content is above any potential overlay */
+}
+
+.header-contents h2{
+    font-weight: 600; /* Made slightly bolder for more prominence */
+    color: white;
+    /* Kept font size, max() is good for responsiveness */
+    font-size: max(4.5vw,28px); /* Increased minimum size for better impact */
+    line-height: 1.2; /* Improved line spacing */
+}
+
+.header-contents p{
+    color:white;
+    /* Adjusted font size for paragraph:
+       - 1vw is too small for this prominent position.
+       - Using max(1.2vw, 16px) ensures a minimum readable size while still scaling.
+    */
+    font-size: max(1.2vw, 16px); 
+    line-height: 1.5; /* Improve readability */
+    margin-bottom: 1vw; /* Add some space before the button */
+}
+
+.header-contents button {
+    /* Kept gradient styling */
+    background: linear-gradient(to right, #007bff, #00c6ff); 
+    color: white;
+    
+    /* Adjusted padding for a slightly larger button, better tap target */
+    padding: 14px 28px; 
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+    /* Adjusted font size for button for better visual weight */
+    font-size: max(1.1vw, 18px); 
+    font-weight: 500; /* Make text slightly bolder */
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: relative; 
+    overflow: hidden; 
+    background-size: 200% 100%; 
+    transition: background-position 0.4s ease; 
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.header-contents button:hover {
+    background-position: -100% 0; 
+}
+
+.header-contents button:active {
+    background-position: 0% 0; 
+    background: linear-gradient(to right, #0056b3, #0099cc); 
+}
+
+.header-contents button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Media Queries */
+@media (max-width:1050px){
+    .header-contents{
+        max-width: 50%; /* Give a bit more room on medium screens */
+        gap: 1vw; /* Reduce gap slightly */
+    }
+    .header-contents h2{
+        font-size: max(5vw,26px);
+    }
+    .header-contents p{
+        font-size: max(1.4vw, 15px);
+    }
+    .header-contents button{
+        padding: 12px 24px;
+        font-size: max(1.5vw, 17px);
+    }
+}
+
+@media (max-width:750px){   
+    .header{
+        /* Adjust height for smaller screens, perhaps a bit shorter */
+        height: 60vh; 
+    }
+
+    .header-contents{
+        /* Increased max-width significantly to prevent content from being too small */
+        max-width: 90%; /* Allow content to take up more width */
+        
+        /* Centering the content horizontally on small screens */
+        left: 50%; 
+        transform: translateX(-50%); 
+        align-items: center; /* Center items for a stacked, centered look */
+        text-align: center; /* Center text within the content box */
+        
+        /* Adjust bottom position as it's quite low in the screenshot */
+        bottom: 5%; 
+        gap: 10px; /* Use fixed pixel gap for small screens */
+    }
+    
+    .header-contents h2{
+        /* Ensure h2 is still readable and impactful on small screens */
+        font-size: max(7vw, 32px); /* Made larger for mobile impact */
+    }
+
+    .header-contents p{
+        /* Re-display paragraph on small screens as it's crucial for context */
+        display: block; /* Show paragraph on mobile */
+        font-size: max(2.5vw, 14px); /* Adjust font size for mobile paragraph */
+        margin-bottom: 15px; /* Add some space below paragraph */
+    }
+    
+    .header-contents button{
+        padding: 3.5vw 7vw; /* Increased padding for better tap target on touch devices */
+        font-size: max(4vw, 16px); /* Ensure readable button text */
+    }
+}
