@@ -43,14 +43,14 @@ const createAdminIfNotExists = async () => {
             password: hashedPassword,
             role: "admin"
         });
-        console.log(" Admin account created:", adminEmail);
+        console.log("Admin account created:", adminEmail);
     } else {
-        console.log("ℹ️ Admin account already exists:", adminEmail);
+        console.log("Admin account already exists:", adminEmail);
     }
 };
 
 app.listen(port, async () => {
     await createAdminIfNotExists(); // Create admin if missing
-    console.log(`🚀 Server Started on http://localhost:${port}`);
-    console.log(`💻 Frontend address: http://localhost:5173/`);
+    console.log(`Server Started on http://localhost:${port}`);
+    console.log(`Frontend address: http://localhost:5173/`);
 });
