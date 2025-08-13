@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
       enum: ["admin", "user", "deliverer"],
-      default: "user",
+      default: "admin",
     },
     cartData: { type: Object, default: {} },
   },
